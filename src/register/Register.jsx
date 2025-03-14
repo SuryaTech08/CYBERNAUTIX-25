@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import './Register.css';
-import { auth } from '../backend/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { db } from '../backend/firebase';
-import { setDoc, doc } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+import { doc, setDoc } from 'firebase/firestore';
 import { motion } from 'framer-motion';
-import { FiUser, FiMail, FiLock, FiPhone, FiBook, FiArrowRight } from 'react-icons/fi';
+import { useState } from 'react';
+import { FiArrowRight, FiBook, FiLock, FiMail, FiPhone, FiUser } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { auth, db } from '../backend/firebase';
+import './Register.css';
 
 // Hardcoded array of events with closed registrations
-const CLOSED_EVENTS = ["Research X", "InnovateX", "RepliCraft", "Cinequery"];
+const CLOSED_EVENTS = ["Research X", "InnovateX", "RepliCraft", "Cinequery", "Surprise Event"];
 // Only "Cinequery" is still open for registration
 
 const NeonPulse = ({ children }) => (
@@ -397,7 +396,7 @@ function Register({ onLogin }) {
             className="p-4 bg-red-900/30 border border-red-500/50 rounded-lg text-red-400 text-sm"
           >
             <div className="font-bold mb-1">Important Notice</div>
-            <div>Registration for all events except the Surprise Events are now closed due to filled slots.</div>
+            <div>Registration for all events are now closed due to filled slots.</div>
           </motion.div>
 
           {/* Error Message */}
